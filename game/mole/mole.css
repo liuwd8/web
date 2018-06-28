@@ -1,0 +1,71 @@
+body {
+	text-align: center;
+	font-family: Verdana, Tahoma,serif;
+}
+#info-bar {
+	width: 400px;
+	margin: auto;
+}
+#left {
+	width: 240px;
+	display: inline-block;
+	text-align: left;
+}
+#right {
+	width: 120px;
+	display: inline-block;
+	vertical-align: bottom;
+	line-height: 25px;
+	text-align: right;
+}
+#stOrSp {
+	margin-right: 70px;
+}
+#behaver {
+	width: 150px;
+	height: 22px;
+	line-height: 22px;
+	border: 2px solid rgba(209,209,209,1);
+}
+#time {
+	width: 50px;
+	height: 18px;
+	line-height: 18px;
+	border: 2px solid rgba(209,209,209,1);
+	float: right;
+	text-align: left;
+}
+#score {
+	width: 50px;
+	height: 18px;
+	line-height: 18px;
+	border: 2px solid rgba(209,209,209,1);
+	text-align: left;
+	float: right;
+}
+#moles {
+	margin: 30px auto;
+	padding: 20px 0;
+	width: 500px;
+	border-top: 2px solid rgba(228,228,228,1);
+	border-bottom: 2px solid rgba(228,228,228,1);
+}
+.moles-button {
+	margin: 10px;
+	border-radius: 50%;
+	background-color: white;
+	padding: 0;
+	border: 2px solid rgba(209,209,209,1);
+	width: 30px;
+	height: 30px;
+	outline: none;
+	vertical-align: text-bottom;
+}
+#introduce {
+	text-align: left;
+	width: 700px;
+	margin: auto;
+}
+.mole {
+	border: 10px solid blue;
+}

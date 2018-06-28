@@ -1,0 +1,39 @@
+body {
+	text-align: center;
+}
+#result {
+	font-size: 2em;
+	height: 1em;
+	line-height: 1em;
+}
+#gameArea0 {
+	width:352px;
+	height: 352px;
+	margin: 30px 0 0 auto;
+	border: 2px solid rgba(216,216,216,1);
+	display: inline-block;
+	vertical-align: bottom;
+}
+#gameArea {
+	width:352px;
+	height: 352px;
+	margin: 30px auto 0 0;
+	border: 2px solid rgba(216,216,216,1);
+	display: inline-block;
+}
+.canvas {
+	vertical-align: middle;
+}
+.scale:hover {
+	transform: scale(1.1);
+}
+#gameStart {
+	margin: 20px auto;
+	background-color: rgba(68,132,247,1);
+	color: white;
+	font-size: 30px;
+	line-height: 30px;
+	border: none;
+	padding: 10px 20px;
+	display: block;
+}

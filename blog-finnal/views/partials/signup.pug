@@ -1,0 +1,17 @@
+#main-signup
+  #info-signup 注册
+  form#form(method='POST')
+    input#username.input(type='text', ng-model='regist.username', name='username', placeholder='用户名')
+    #usernameError.error
+    input#password.input(type='password', ng-model='regist.password', name='password', placeholder='密码')
+    #passwordError.error
+    input#passwordAgain.input(type='password', ng-model='regist.passwordAgain', name='passwordAgain', placeholder='再次确认密码')
+    #passwordAgainError.error
+    input#sid.input(type='text', ng-model='regist.sid', name='sid', placeholder='学号')
+    #sidError.error
+    input#email.input(type='text', ng-model='regist.email', name='email', placeholder='邮箱')
+    #emailError.error
+    input#phone.input(type='text', ng-model='regist.phone', name='phone', placeholder='手机号码')
+    #phoneError.error
+    button#reset(type='button') 重置
+    input#submit(type='submit', value='注册', disabled='disabled')

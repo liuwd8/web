@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title signin
+    meta(charset='utf-8')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/signin.css')
+  body
+    #main
+      #info #{info}
+      form#form(method='POST')
+        input#username(type='text', name='username', placeholder='用户名')
+        #usernameError.error
+        input#password(type='password', name='password', placeholder='密码')
+        #passwordError.error
+        input#submit(type='submit', value='登录', disabled='disabled')
+    script(src='https://code.jquery.com/jquery-3.2.1.min.js', integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=', crossorigin='anonymous')
+    script(type='text/javascript', src='/javascripts/signin.js')

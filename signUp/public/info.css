@@ -1,0 +1,17 @@
+body {
+	text-align: center;
+	background-image: url(img/background.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	opacity: 0.8;
+}
+#error {
+	color: red;
+}
+#info {
+	background-color: white;
+	width: 30em;
+	margin: auto;
+	margin-top: 200px;
+	border: 2px solid blue;
+}

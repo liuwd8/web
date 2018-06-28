@@ -1,0 +1,395 @@
+html,body{
+	height: 100%;
+	width: 100%;
+	background: url("../images/tennisTime.jpg") no-repeat fixed center;
+}
+
+.top{
+	width: 100%;
+	height: 10%;
+	font-size: 45px;
+	text-align: center;
+	padding-top: 10px;
+	background: url("../images/top.png") no-repeat center rgba(255,255,255,0.5);
+	box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+}
+
+.search {
+	position: absolute;
+	right: 0px;
+	font-size: 20px;
+	opacity: 0.9;
+}
+
+.left{
+	position: absolute;
+	top: 12%;
+	width: 12%;
+	height: 100%;
+	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+	background: url("../images/left.png") no-repeat center;
+	box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+}
+
+.info{
+	width: 100%;
+	height: 100px;
+	font-size: 25px;
+	background: #E5E5E5;
+	text-align: center;
+	padding-top: 30px;
+}
+
+button{
+	cursor: pointer;
+}
+
+.func{
+	margin-top: 10px;
+}
+
+li button{
+	width: 100%;
+	height: 70px;
+	font-size: 17px;
+	outline: none;
+	border: 0px;
+	background: #FAFAFA;
+}
+
+li button:hover{
+	background: #E5E5E5;
+	transition: 0.5s;
+}
+
+li button:active{
+	background: #789;
+	transition: 0.5s;
+}
+
+li{
+	list-style: none;
+	margin: 0px 0px 0px -40px;
+}
+
+table th,table td{
+	text-align: center;
+}
+
+li.signout{
+	width: 12%;
+	position: fixed;
+	bottom: 0px;
+}
+
+div.right{
+	font-family: Helvetica, Arial, sans-serif;
+	width: 86.9%;
+	height: 100%;
+	position: absolute;
+	top: 12%;
+	left: 13.1%;
+	box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+}
+
+div.competition,div.result{
+	width: 100%;
+	height: 100%;
+	padding: 10px 20px 0px 25px;
+	background: rgba(255,255,255,0.5);
+	opacity: 0.9;
+}
+
+div.competition .infoList,div.result .infoList{
+	vertical-align: top;
+	width: 50%;
+	color: black;
+	display: inline-block;
+	overflow: auto;
+}
+
+div.competition .infoList{
+	height: 98%;
+}
+
+div.competition div.system{
+	margin-top: 10px;
+	font-size: 15px;
+	height: 90px;
+	width: 25%;
+	text-align: left;
+	float: left;
+}
+
+div.competition div.system span, div.competition div.seed span{
+	display: block;
+	margin: 5px;
+}
+
+div.competition div.seed{
+	margin-top: 10px;
+	height: 77px;
+	float: right;
+}
+
+div.competition #seedNumber{
+	height: 30px;
+	border-radius: 3px;
+	width: 330px;
+}
+
+div.competition div.container{
+	clear: both;
+	width: 100%;
+	height: 50px;
+	padding: 0px;
+}
+
+div.competition div.container input{
+	display: block;
+	border-radius: 3px;
+}
+
+div.competition div.container div.file{
+	width: 110px;
+	height: 45px;
+}
+
+div.competition div.container div.GroupLoop{
+	overflow: auto;
+	float: right;
+}
+
+div.competition div.container div, div.competition div.container div.GroupLoop div{
+	display: inline-block;
+}
+
+div.competition div.container div.file button.uploadBtn{
+	margin: 0px;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	color: white;
+	background: #29b6f6;
+	outline: none;
+	border: 0px;
+}
+
+div.competition button:hover{
+	box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+	transition: 0.5s;
+}
+
+/*div.competition div.container div.file .uploadBtn input{
+	position: absolute;
+	top: 0px;
+	left: 0px
+	z-index: -1;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+}*/
+
+div.competition div.container div.file input{
+	position: relative;
+	top: -45px;
+	z-index: -1;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+}
+
+div.competition #drop{
+	border:2px dashed #bbb;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+	padding:25px;
+	text-align:center;
+	font:20pt bold,"Vollkorn";
+	color:#bbb;
+}
+
+div.competition button{
+	margin: 10px 0px;
+	width: 100px;
+	height: 40px;
+	color: white;
+	background: #29b6f6;
+	outline: none;
+	border: 0px;
+}
+
+div.competition button.excel{
+	float: right;
+}
+
+div.competition div#race{
+	height: 45%;
+	overflow: auto;
+}
+
+h1,h2,h4 {
+	text-align: center;
+}
+
+div.result button{
+	outline: none;
+	border: 0px;
+	color: white;
+	background: #29b6f6;
+	width: 100px;
+	height: 40px;
+}
+
+div.result button.changeInfoButt{
+	margin-right: 1px;
+}
+
+div.result button:hover{
+	box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+	transition: 0.5s;
+}
+
+div.result div.infoTotal span.title {
+	font-size: 17px;
+}
+
+div.result div.infoTotal {
+	width: 100%;
+	height: 85%;
+}
+
+div.result div.victoryInfo {
+	width: 100%;
+	height: 95%;
+	position: relative;
+}
+
+div.result div.victoryInfo table td:nth-child(odd){
+	cursor: pointer;
+}
+
+div.result div.victoryInfo table td:nth-child(odd):hover{
+	box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+	transition: 0.5s;
+}
+
+div.result div.confirmAndModify{
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+}
+
+div.result div.GenerateCompetition{
+	margin-top: 50px;
+}
+
+div.result div.GenerateCompetition select {
+	width: 110px;
+	height: 40px;
+	margin-left: 35%;
+	margin-right: 20%;
+	display: inline-block;
+}
+
+div.result .SingleCycleMatchesContainer,div.result .GroupLoopMatchesContainer,div.result .SingleEliminationContainer{
+	height: 95%;
+	overflow: auto;
+}
+
+.vsColor {
+	font-style: italic;
+	font-size: 20px;
+}
+
+.restoreButt{
+	margin: 1px;
+}
+
+div.index,div.index div.infoList{
+	width: 100%;
+	height: inherit;
+	overflow: auto;
+	opacity: 0.9;
+}
+
+div.index div.infoList{
+	width: 100%; 
+	height: 100%;
+	overflow: auto;
+}
+
+div.index table tbody tr{
+	cursor: pointer;
+}
+
+div.index div#reviseInfo{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	display: none;
+	overflow: auto;
+}
+
+div.index div#reviseInfo div{
+	margin: auto;
+	margin-top: 0px;
+	width: 60%;
+	overflow: auto;
+}
+
+div.index div.modal-body{
+	margin-top: -20px !important;
+}
+
+div.index div.modal-body div.form-group{
+	width: 100% !important;
+}
+
+div.index div#reviseInfo form{
+	width: 100%;
+}
+
+div.index div#reviseInfo form div{
+	display: inline;
+}
+
+div.index span{
+    display: block;
+    margin: 0px 0px 5px 0px;
+    font-size: 10px;
+    color: gray;
+}
+
+div.index input{
+	width: 100%;
+    height: 25px;
+    border: 2px white inset;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+div.index form button{
+	width: 100px;
+	height: 40px;
+	color: white;
+	background: #29b6f6;
+	outline: none;
+	border: 0px;
+}
+
+div.index form button:hover{
+	box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+	transition: 0.5s;
+}
+
+div.index form button#cancel{
+	float: right;
+}
+
+.red{
+    color: #f29783 !important;
+}

@@ -1,0 +1,47 @@
+extends layout
+
+block body
+
+  .top
+    span 网球比赛系统
+    label.search
+      | Search:
+      input(ng-model="searchText")
+  .left
+    .info
+      i.fa.fa-home
+      span!=username
+        
+    .func
+      ul
+        li
+          a.waves-effect.waves-light(href="#!/info")
+            button
+              i.fa.fa-user
+              span  运动员信息
+        li
+          a.waves-effect.waves-light(href="#!/competition")
+            button
+              i.fa.fa-list
+              span  赛制及对战
+                
+        li
+          a.waves-effect.waves-light(href="#!/result")
+            button
+              i.fa.fa-table
+              span  比赛 结果
+                 
+        li.signout
+          a.waves-effect.waves-light(href="/signout")
+            button
+              i.fa.fa-power-off
+              span  退   出
+      .clearfix
+  div.right(ng-view)
+  
+  script(src='js/dist/xlsx.full.min.js')
+  script(src="js/JsonExportExcel-master/dist/JsonExportExcel.min.js")
+  script(src="js/angular.js")
+  script(src="js/angular-route.js")
+  script(src='js/jquery-3.2.1.min.js')
+  script(src='js/app.js')

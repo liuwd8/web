@@ -1,0 +1,31 @@
+section
+  h3.title {{post.title}}
+  div.blogUsername {{post.username}}
+  div.blogDate {{post.date}}
+  div.blogText {{post.text}}
+  button.commentButton(ng-click='showComment()') 评论
+  div(ng-show='showCommentBool')
+    textarea(ng-model='newComment', cols='50', rows='15')
+    button(ng-click='submit()') Submit
+  p 共{{count}}条评论
+  div.comment(ng-repeat='comment in post.comment')
+    div.hideButton(ng-click='hideComment(comment,true)', ng-show='global.isAdmin&&!comment.isHide') 隐藏
+    div.hideButton(ng-click='hideComment(comment,false)', ng-show='global.isAdmin&&comment.isHide') 取消隐藏
+    div(ng-show='!comment.editComment')
+      div.commentUsername {{comment.username}}
+      div.commentDate {{comment.date}}
+      div.commentText(ng-show='!comment.isHide||global.isAdmin||user.username == comment.username') {{comment.context}}
+      div.hided(ng-show='comment.isHide') 该内容已被隐藏
+    div(ng-show='!comment.isHide||global.isAdmin||user.username == comment.username')
+      button.deleteButton(ng-click='deleteComment(comment)', ng-show='comment.username == user.username') 删除
+      button.editButton(ng-click='showEditCommentDiv(comment)', ng-show='comment.username == user.username') 修改
+      div(ng-show='comment.editComment')
+        textarea(ng-model='comment.context', cols='50', rows='15', required)
+        button.commentButton(ng-click='changeComment(comment)') 提交
+  div#pages
+    ul.pages
+      li(ng-show='current > 1',title='上一页', ng-click='paginationTo(current-1)') «
+      li(ng-class='{current:current==n}', ng-repeat='n in pageIndex',title='{{\'第\'+n+\'页\'}}', ng-click='paginationTo(n)') {{n}}
+      li(ng-show='pageIndex[pageIndex.size-1] < maxBlogsNumberPage - 2') ...
+      li(ng-show='pageIndex[pageIndex.size-1] < maxBlogsNumberPage - 2',title='{{\'第\'+maxBlogsNumberPage+\'页\'}}', ng-click='paginationTo(maxBlogsNumberPage)') {{maxBlogsNumberPage}}
+      li(ng-show='current < maxBlogsNumberPage',title='下一页', ng-click='paginationTo(current+1)') »

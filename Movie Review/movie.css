@@ -1,0 +1,107 @@
+body {
+	background-image: url(img/background.png);
+	font-size: 8pt;
+	font-family: Verdana, Tahoma,sans-serif;
+	margin: 0;
+	padding: 0;
+}
+div#banner {
+	background-image: url(img/bannerbackground.png);
+	background-repeat: repeat-x;
+	height: 50px;
+	text-align: center;
+}
+h1 {
+	font-size: 24pt;
+	font-weight: bold;
+	font-family: Tahoma, Verdana,sans-serif;
+	text-align: center;
+}
+div#pagecontent {
+	width: 800px;
+	border: 4px solid grey;
+	margin: auto;
+	height: auto;
+	overflow: hidden;
+}
+div#right {
+	float: right;
+	width: 250px;
+	background-color: #A2B964;
+	font-family: Arial,sans-serif;
+}
+dl {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+dt {
+	font-weight: bold;
+}
+div#left {
+	float: left;
+	width: 550px;
+	height: auto;
+}
+div#rotten {
+	background-image: url(img/rottenbackground.png);
+	height: 83px;
+	color: white;
+}
+div#rotten img {
+	vertical-align: bottom;
+}
+span {
+	color: red;
+	font-size: 48pt;
+	font-weight: bold;
+}
+div#columnleft {
+	float: left;
+	width: 47%;
+	margin-left: 2%;
+	margin-right: 1%;
+}
+div#columnright {
+	float: left;
+	width: 47%;
+	margin-left: 1%;
+	margin-right: 2%;
+}
+div#quote {
+	margin: 0 0 3em 0;
+	overflow: hidden;
+}
+div#bar {
+	text-align: center;
+	vertical-align: bottom;
+	clear: both;
+	background-color: #A2B964;
+	padding: 5px;
+}
+div#bar p {
+	margin: 0;
+}
+div#img_fixed {
+	position: fixed;
+	right: 0;
+	bottom: 0;
+}
+div#img_fixed img {
+	padding: 0;
+	border: 0;
+	margin: 0;
+}
+.comment {
+	border: 2px solid grey;
+	background-color: #E1D697;
+	font-weight: bold;
+	padding: 8px;
+	overflow: hidden;
+}
+.like {
+	float: left;
+	margin-right: 5px;
+}
+.contenttext {
+	margin-top: 1em;
+}

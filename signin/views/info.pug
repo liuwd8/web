@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title 用户详情
+    meta(charset='utf-8')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/info.css')
+  body
+    #exit
+      a(href='/signin')
+        button(type='button') 退出
+    #info
+      h1 用户详情
+      div #{err}
+      div
+        p 用户名：#{username}
+        p 学号：#{sid}
+        p 邮箱：#{email}
+        p 电话：#{phone}

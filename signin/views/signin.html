@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>signin</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/signin.css">
+  </head>
+  <body>
+    <div id="main">
+      <div id="info">请登录</div>
+      <form id="form" method="POST">
+        <input type="text" name="username" id="username" placeholder="用户名"/>
+        <div id="usernameError" class="error"></div>
+        <input type="password" name="password" id="password" placeholder="密码"/>
+        <div id="passwordError" class="error"></div>
+        <input type="submit" id="submit" value="登录" disabled="disabled"/>
+        <a href="/regist"><button type='button' id="signup">注册</button></a>
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/javascripts/signin.js"></script>
+  </body>
+</html>

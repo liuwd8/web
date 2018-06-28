@@ -1,0 +1,9 @@
+div.post
+  h2.title {{post.title}}
+  div.blogUsername {{post.username}}
+  div.blogDate {{post.date}}
+  div.blogText {{post.text}}
+  div#deleteBlog
+    p Are you sure you want to delete this post?
+    button#deleteButton(ng-click='deletePost()') Yes
+    button#noDeleteButton(ng-click='home()') No thanks

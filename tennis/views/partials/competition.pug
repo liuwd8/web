@@ -1,0 +1,125 @@
+div.competition
+  h1 赛制及对战
+  div.system
+    span 选择赛制: 
+    select.form-control#Competition-system(ng-model='$parent.format')
+      option(value='SingleElimination')  单淘汰制
+      option(value='SingleCycle')  单循环制
+      option(value='GroupLoop')  分组循环赛制
+          
+  div.seed
+    span 种子选手数: 
+    input#seedNumber(ng-model='seedNum')
+
+  div.container
+    div.file
+      button.waves-effect.waves-light.uploadBtn
+        i.fa.fa-cloud-upload
+        span 上传
+      input#xlf(type='file', accept=".xlsx,.xlc,.xlm,.xls,.xlt,.xlw,.xml")
+        
+    div.GroupLoop(ng-if='format == \'GroupLoop\'')
+      div#days
+        span 比赛天数: 
+        input(ng-model='$parent.days')
+      div#fields
+        span 比赛场地数: 
+        input(ng-model='$parent.changdishu')
+      div#sectionsOfOneDay
+        span 每天节数: 
+        input(ng-model='$parent.sectionPerDay')
+      div#capacityOfOnefieldAndOneSection
+        span 每场地每节容量: 
+        input(ng-model='$parent.containPerchangdi')
+
+  br
+  #drop 拖拽excel文件到此处
+
+  button.generate(name="button",ng-click='generateMatches()') 生成对战
+  button.excel(name="submit") 导出Excel
+
+  br
+  pre#out
+  div#race
+    div(ng-if='format == \'SingleElimination\'')
+      div.infoList
+        table.table.table-striped.table-hover
+          thead(align="center")
+            tr
+              th 运动员
+              th vs
+              th 运动员
+          tbody
+            tr(ng-repeat='(key,match) in SingleEliminationMatches | filter:searchText',ng-if='key<SingleEliminationMatches.length/2')
+              td {{match.athleteA['姓名']}}
+              td VS
+              td {{match.athleteB['姓名']}}
+      div.infoList
+        table.table.table-striped.table-hover
+          thead(align="center")
+            tr
+              th 运动员
+              th vs
+              th 运动员
+          tbody
+            tr(ng-repeat='(key,match) in SingleEliminationMatches | filter:searchText',ng-if='key>=SingleEliminationMatches.length/2')
+              td {{match.athleteA['姓名']}}
+              td VS
+              td {{match.athleteB['姓名']}}
+    div(ng-if='format == \'SingleCycle\'')
+      div(ng-repeat='match in SingleCycleMatches')
+        h2 第{{match.round}}轮
+        div.infoList
+          table.table.table-striped.table-hover
+            thead(align="center")
+              tr
+                th 运动员
+                th vs
+                th 运动员
+            tbody
+              tr(ng-repeat='(key,k) in match.match | filter:searchText',ng-if='key<match.match.length/2')
+                td {{k.athleteA['姓名']}}
+                td VS
+                td {{k.athleteB['姓名']}}
+        div.infoList
+          table.table.table-striped.table-hover
+            thead(align="center")
+              tr
+                th 运动员
+                th vs
+                th 运动员
+            tbody
+              tr(ng-repeat='(key,k) in match.match | filter:searchText',ng-if='key>=match.match.length/2')
+                td {{k.athleteA['姓名']}}
+                td VS
+                td {{k.athleteB['姓名']}}
+    div(ng-if='format == \'GroupLoop\'')
+      div(ng-repeat='(key,match) in GroupLoopMatches | filter:searchText')
+        h2 第{{key+1}}组
+        div(ng-repeat='mat in match')
+          h4 第{{mat.round}}轮
+          div.infoList
+            table.table.table-striped.table-hover
+              thead(align="center")
+                tr
+                  th 运动员
+                  th vs
+                  th 运动员
+              tbody
+                tr(ng-repeat='(key,k) in mat.match | filter:searchText',ng-if='key<mat.match.length/2')
+                  td {{k.athleteA['姓名']}}
+                  td VS
+                  td {{k.athleteB['姓名']}}
+          div.infoList
+            table.table.table-striped.table-hover
+              thead(align="center")
+                tr
+                  th 运动员
+                  th vs
+                  th 运动员
+              tbody
+                tr(ng-repeat='(key,k) in mat.match | filter:searchText',ng-if='key>=mat.match.length/2')
+                  td {{k.athleteA['姓名']}}
+                  td VS
+                  td {{k.athleteB['姓名']}}
+  br

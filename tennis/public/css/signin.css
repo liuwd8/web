@@ -1,0 +1,76 @@
+body{
+    background: url('../images/signin.jpg') no-repeat fixed;
+    background-size: 100%;
+}
+
+.Container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);   
+    -moz-transform: translate(-50%, -50%);   
+    -ms-transform: translate(-50%, -50%);   
+    -o-transform: translate(-50%, -50%);   
+    transform: translate(-50%, -50%);  
+    width: 350px;
+    height: 400px;
+    margin: auto;
+    padding-top: 50px;
+    text-align: center;
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 0 3px 10px rgba(0,0,0,.156863), 0 3px 10px rgba(0,0,0,.227451);
+}
+
+img{
+    width: 35%;
+    height: 30%;
+}
+
+form{
+    margin: 30px 70px auto 70px;
+    width: 210px;
+    overflow: hidden;
+    text-align: left;
+}
+
+span{
+    display: block;
+    margin: 0px 0px 5px 0px;
+    font-size: 10px;
+    color: gray;
+}
+
+.red{
+    color: #f29783;
+}
+
+input{
+    width: 210px;
+    height: 25px;
+    border: 2px white inset;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+#signin{
+    width: 210px;
+    height: 25px;
+    padding: 0px;
+    outline: none;
+    border: 0px;
+    margin: 0px 10px 10px 0px;
+    
+    font-weight: bold;
+    background-color: rgb(193,224,220);
+}
+
+#signin:hover{
+    background-color: rgb(165,210,205);
+}
+
+.msg{
+    padding-left: 20px;
+    height: 1em;
+    font-size: 20px;
+    color: red;
+}

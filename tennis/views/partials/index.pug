@@ -1,0 +1,26 @@
+div.index
+  div.infoList
+    table.table.table-striped.table-hover
+      thead(align="center")
+        tr
+          th 序号
+          th(ng-repeat='key in keys' on-finish-render) {{key.conventer()}}
+      tbody
+        tr(ng-repeat='(index,d) in data | filter:searchText' ng-click='showDiv(d, keys)')
+          td {{index + 1}}
+          td(ng-repeat='key in keys') {{d.athlete[key]}}
+  div#reviseInfo
+    div.modal-dialog.modal-open.modal-flow
+      div.modal-content
+        div.modal-header
+          h3 修改信息
+        div.modal-body
+          div.form-group
+            form(method='POST')
+              div(ng-repeat='(index,key) in keys',ng-if='index < keys.length-1')
+                span {{key.conventer()}}
+                input(ng-model='info.athlete[key]')
+              div
+                button#submit(type=submit) 保存
+                button#cancel 取消
+        div.modal-footer

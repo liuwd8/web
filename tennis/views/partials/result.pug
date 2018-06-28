@@ -1,0 +1,98 @@
+div.result 
+  div.infoTotal 
+    h1 比赛结果
+    span.title 胜负信息
+    div.victoryInfo
+      div.SingleEliminationContainer(ng-if='format == \'SingleElimination\'')
+        div.infoList
+          table.table.table-striped.table-hover
+            thead(align="center")
+              tr
+                th 运动员
+                th vs
+                th 运动员
+
+            tbody
+              tr(ng-repeat='(key,match) in SingleEliminationMatches | filter:searchText',ng-if='key<SingleEliminationMatches.length/2' get-winner)
+                td {{match.athleteA['姓名']}}
+                td.vsColor VS
+                td {{match.athleteB['姓名']}}
+        div.infoList
+          table.table.table-striped.table-hover
+            thead(align="center")
+              tr
+                th 运动员
+                th vs
+                th 运动员
+
+            tbody
+              tr(ng-repeat='(key,match) in SingleEliminationMatches | filter:searchText',ng-if='key>=SingleEliminationMatches.length/2' on-finish-render get-winner)
+                td {{match.athleteA['姓名']}}
+                td.vsColor VS
+                td {{match.athleteB['姓名']}}
+      div.SingleCycleMatchesContainer(ng-if='format == \'SingleCycle\'')
+        div(ng-repeat='k in SingleCycleMatches' on-finish-render)
+          h1 第{{k.round}}轮
+          div.infoList
+            table.table.table-striped.table-hover
+              thead(align="center")
+                tr
+                  th 运动员
+                  th vs
+                  th 运动员
+              tbody
+                tr(ng-repeat='(key,match) in k.match | filter:searchText',ng-if='key<k.match.length/2' get-winner)
+                  td {{match.athleteA['姓名']}}
+                  td.vsColor VS
+                  td {{match.athleteB['姓名']}}
+          div.infoList
+            table.table.table-striped.table-hover
+              thead(align="center")
+                tr
+                  th 运动员
+                  th vs
+                  th 运动员
+              tbody
+                tr(ng-repeat='(key,match) in k.match | filter:searchText',ng-if='key>=k.match.length/2' get-winner)
+                  td {{match.athleteA['姓名']}}
+                  td.vsColor VS
+                  td {{match.athleteB['姓名']}}
+      div.GroupLoopMatchesContainer(ng-if='format == \'GroupLoop\'')
+        div(ng-repeat='(key,match) in GroupLoopMatches' on-finish-render)
+          h1 第{{key+1}}组
+          div(ng-repeat='mat in match')
+            h1 第{{mat.round}}轮
+            div.infoList
+              table.table.table-striped.table-hover
+                thead(align="center")
+                  tr
+                    th 运动员
+                    th vs
+                    th 运动员
+                tbody
+                  tr(ng-repeat='(key,match) in mat.match | filter:searchText',ng-if='key<mat.match.length/2' get-winner)
+                    td {{match.athleteA['姓名']}}
+                    td.vsColor VS
+                    td {{match.athleteB['姓名']}}
+            div.infoList
+              table.table.table-striped.table-hover
+                thead(align="center")
+                  tr
+                    th 运动员
+                    th vs
+                    th 运动员
+                tbody
+                  tr(ng-repeat='(key,match) in mat.match | filter:searchText',ng-if='key>=mat.match.length/2' get-winner)
+                    td {{match.athleteA['姓名']}}
+                    td.vsColor VS
+                    td {{match.athleteB['姓名']}}
+
+      div.confirmAndModify
+        button.saveInfoButt 修改信息
+  div.GenerateCompetition
+    select.form-control#Competition-system(ng-model='$parent.format')
+      option(value='SingleElimination')  单淘汰制
+      option(value='SingleCycle')  单循环制
+      option(value='GroupLoop')  分组循环赛制
+    button.createNewRaceButt 生成下一轮
+    button.restoreButt 撤回

@@ -1,0 +1,290 @@
+/* app css stylesheet */
+
+ul {
+  list-style: none;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+ul > li {
+  display: inline-block;
+  padding: 15px 8px;
+  color: white;
+}
+body {
+  font-family: "Microsoft YaHei","微软雅黑",Helvetica,Tahoma,Arial,STXihei,"华文细黑",SimSun,"宋体",Heiti,"黑体",sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: #ddd;
+}
+div {
+  word-break:break-all;
+}
+section {
+  padding: 3px 10px;
+  background-color: #fff;
+}
+#banner-background {
+  background: #222;
+}
+#banner {
+  width: 1000px;
+  margin: auto;
+}
+.logo {
+  color: white;
+  font-size: 20px;
+  line-height: 20px;
+  height: 50px;
+}
+.logo > li {
+  vertical-align: middle;
+  padding: 0;
+}
+.logo > li img {
+  vertical-align: bottom;
+}
+.menu a {
+  color: #aaa;
+}
+.user a,.menu a:hover {
+  color: white;
+}
+a,a:hover,a:visited {
+  text-decoration: none;
+}
+.right {
+  float: right;
+}
+
+#main {
+  text-align: left;
+  width: 1000px;
+  margin: auto;
+}
+#blogs {
+  width: 70%;
+  display: inline-block;
+  background-color: #fff;
+  border-radius: 3px;
+}
+#signin {
+  background-color: white;
+}
+#info {
+  width: 28%;
+  display: inline-block;
+  vertical-align: top;
+  background-color: #fff;
+  border-radius: 3px;
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+#main-signin {
+  margin: auto;
+  width: 400px;
+  padding: 25px;
+}
+#main-signup {
+  background-color: white;
+  margin: auto;
+  width: 400px;
+  padding: 25px;
+}
+.input {
+  font-size: 1em;
+  width: 400px;
+  height: 2em;
+  line-height: 2em;
+}
+#info-signin,#info-signup {
+  margin-bottom: 1em;
+  font-size: 2em;
+  height: 1.5em;
+  text-align: center;
+}
+.error {
+  color: red;
+  height:1.5em;
+  text-align: left;
+}
+#reset {
+  color: white;
+  background-color: rgb(3,155,229);
+  border: none;
+  font-size: 1.5em;
+  width: 170px;
+  margin-right: 60px;
+}
+#submit {
+  color: rgba(0,0,0,0.12);
+  background-color: rgba(0,0,0,0.12);
+  border: none;
+  font-size: 1.5em;
+  width: 170px;
+}
+#submit.submitenable {
+  color: white;
+  background-color: rgb(3,155,229);
+}
+ul.pages > li {
+  color: #06c;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-left-width: 0;
+  padding: 4px 12px;
+}
+ul.pages > li:hover {
+  background-color: #f5f5f5;
+}
+ul > li.current {
+  color: #999;
+  background-color: #f5f5f5;
+}
+.modify a,.modify a:visited,.modify a:hover {
+  color: white;
+}
+#pages {
+  text-align: center;
+  margin-top: 30px;
+}
+#seachArea {
+  margin-bottom: 10px;
+  background-color: #fff;
+  border: 1px #ccc solid;
+  padding: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,.3);
+  display: block;
+  margin: 2em 0;
+  width: 70%;
+}
+#seach {
+  width: 93%;
+  height: 2em;
+  vertical-align: bottom;
+  border: none;
+  outline: none;
+}
+#seachButton {
+  background: url(https://cn.bing.com/s/cn/cn_searchbt_hp.png) center no-repeat;
+  border: 1px solid transparent;
+  font-size: 1.1em;
+  height: 1.5em;
+  width: 2em;
+  outline: none;
+  padding: 0;
+  width: 7%;
+}
+.title {
+  font-size: 1.1em;
+  color: #06c;
+  cursor: pointer;
+  margin: 0;
+}
+.title:hover {
+  text-decoration-line: underline;
+}
+.blogUsername, .blogDate, .commentUsername, .commentDate{
+  font-size: 0.9em;
+  display: inline-block;
+}
+.blogDate, .commentDate {
+  margin-left: 10px;
+}
+.blog, .comment {
+  border-top: 1px solid #ddd;
+  padding: 3px 10px;
+}
+.blog:hover, .comment:hover {
+  background-color: #f5f5f5;
+}
+.blogText, .commentText {
+  padding: 2px 0;
+}
+.deleteButton {
+  float: right;
+  clear: both;
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 3px;
+}
+#deleteButton {
+  background-color: red;
+  border: 1px solid red;
+  border-radius: 3px;
+  margin-right: 50px;
+  font-size: 1em;
+}
+#noDeleteButton,.editButton {
+  background-color: #5bc0de;
+  border: 1px solid #5bc0de;
+  border-radius: 3px;
+  color: white;
+}
+#noDeleteButton {
+  font-size: 1em;
+}
+.hideButton {
+  display: inline-block;
+  float: right;
+  clear: both;
+  color: white;
+  background-color: #06c;
+  border: 1px solid #06c;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#deleteBlog {
+  text-align: center;
+  font-size: 1.5em;
+}
+.hided {
+  text-align: center;
+  color: red;
+}
+.post {
+  background-color: #fff;
+  padding: 0 5px 0 0;
+}
+.commentButton {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  background-color: #5cb85c;
+  color: #fff;
+  outline: none;
+}
+.commentButton:hover {
+  text-decoration: underline;
+}
+textarea {
+  display: block;
+  height: auto;
+  width: 100%;
+  font-size: 2em;
+}
+.post input {
+  font-size: 1.5em;
+  width: 90%;
+}
+p {
+  margin: 0;
+}
+h2 {
+  margin: 0 0 10px 0;
+}
+.editPost {
+  font-size: 1.5em;
+  margin-left: 40%;
+  margin-top: 10px;
+}
+.webStatus {
+  font-size: 1.2em;
+  color: #888;
+  padding: 10px 15px 15px;
+  border-bottom: 1px solid #ddd;
+}
+.showStatus {
+  padding: 10px 15px 15px;
+}

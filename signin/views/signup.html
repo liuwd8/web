@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>signup</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../public/stylesheets/signup.css">
+  </head>
+  <body>
+    <div id="main">
+      <div id="info">注册</div>
+      <form id="form" method="POST">
+        <input type="text" name="username" id="username" class="input" placeholder="用户名"/>
+        <div id="usernameError" class="error"></div>
+        <input type="password" name="password" id="password" class="input" placeholder="密码"/>
+        <div id="passwordError" class="error"></div>
+        <input type="password" name="passwordAgain" id="passwordAgain" class="input" placeholder="再次确认密码"/>
+        <div id="passwordAgainError" class="error"></div>
+        <input type="text" name="sid" id="sid" class="input" placeholder="学号"/>
+        <div id="sidError" class="error"></div>
+        <input type="text" name="email" id="email" class="input" placeholder="邮箱"/>
+        <div id="emailError" class="error"></div>
+        <input type="text" name="phone" id="phone" class="input" placeholder="手机号码"/>
+        <div id="phoneError" class="error"></div>
+        <button type="button" id="reset">重置</button>
+        <input type="submit" id="submit" value="注册" disabled="disabled"/>
+      </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../public/javascripts/validator.js"></script>
+    <script type="text/javascript" src="../public/javascripts/signup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+#signin
+  #main-signin
+    #info-signin 请登录
+    form#form(method='POST')
+      input#username.input(type='text', ng-model='login.username', name='username', placeholder='用户名')
+      #usernameError.error
+      input#password.input(type='password',ng-model='login.password', name='password', placeholder='密码')
+      #passwordError.error
+      input#submit.login(type='submit', value='登录', disabled='disabled')
