@@ -3,7 +3,7 @@
 var mongo   = require("mongoose");
 var crypto  = require('crypto');
 
-var db      = mongo.createConnection('mongodb://liuwd8:Liuwd8665@127.0.0.1:27017/account');
+var db      = mongo.createConnection('mongodb://127.0.0.1:27017/account');
 
 db.on('connected', function () {
   console.log('数据库连接已建立');

@@ -5,7 +5,7 @@
 var mongo   = require("mongoose");
 var promise = require('bluebird');
 
-var db = mongo.createConnection('mongodb://liuwd8:Liuwd8665@127.0.0.1:27017/match');
+var db = mongo.createConnection('mongodb://127.0.0.1:27017/match');
 
 db.on('connected', function () {
   console.log('数据库连接已建立');
