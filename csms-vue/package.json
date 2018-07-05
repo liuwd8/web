@@ -1,8 +1,8 @@
 {
-  "name": "bms-vue",
+  "name": "csms-vue",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "liuyh73 <7home7Tmade>",
+  "author": "JCMatrix <2474223242@qq.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -17,13 +17,13 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
-    "element-ui": "^2.4.2",
+    "element-ui": "^2.4.3",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "morgan": "^1.9.0",
     "mysql": "^2.15.0",
     "session-file-store": "^1.2.0",
     "vue": "^2.5.2",
-    "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
@@ -63,7 +63,6 @@
     "jest-serializer-vue": "^0.3.0",
     "nightwatch": "^1.0.6",
     "node-notifier": "^5.1.2",
-    "node-sass": "^4.9.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "ora": "^1.2.0",
     "portfinder": "^1.0.13",
@@ -71,7 +70,6 @@
     "postcss-loader": "^2.0.8",
     "postcss-url": "^7.2.1",
     "rimraf": "^2.6.0",
-    "sass-loader": "^7.0.3",
     "selenium-server": "^3.0.1",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
