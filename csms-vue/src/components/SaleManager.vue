@@ -7,40 +7,28 @@
       stripe
       >
       <el-table-column
-        label="用户"
+        label="单号"
         width="180"
         align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.bookId }}</span>
+          <span>{{ scope.row.SID }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        label="车型"
+        label="卖出车辆"
+        width="180"
+        align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.SNum }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="卖出时间"
         width="180"
         align="center">
         <template slot-scope="scope">
           <i class="el-icon-time"></i>
-          <el-popover trigger="hover" placement="top">
-            <p>书名: {{ scope.row.bookName }}</p>
-            <p>出版社: {{ scope.row.bookInfo }}</p>
-            <div slot="reference" class="name-wrapper">
-              <el-tag size="medium">{{ scope.row.bookName }}</el-tag>
-            </div>
-          </el-popover>
-        </template>
-      </el-table-column>
-      <el-table-column
-        label="数量"
-        width="180"
-        align="center">
-        <template slot-scope="scope">
-          <el-popover trigger="hover" placement="top">
-            <p>书名: {{ scope.row.bookName }}</p>
-            <p>出版社: {{ scope.row.bookInfo }}</p>
-            <div slot="reference" class="name-wrapper">
-              <el-tag size="medium">{{ scope.row.bookName }}</el-tag>
-            </div>
-          </el-popover>
+          <span>{{ scope.row.SDate }}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -48,13 +36,15 @@
         width="180"
         align="center">
         <template slot-scope="scope">
-          <el-popover trigger="hover" placement="top">
-            <p>书名: {{ scope.row.bookName }}</p>
-            <p>出版社: {{ scope.row.bookInfo }}</p>
-            <div slot="reference" class="name-wrapper">
-              <el-tag size="medium">{{ scope.row.bookName }}</el-tag>
-            </div>
-          </el-popover>
+          <span>{{ scope.row.SProfit }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="顾客姓名"
+        width="180"
+        align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.CName }}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -84,92 +74,12 @@ export default {
   data () {
     return {
       tableData: []
-      // formLabelWidth: "120px",
-      // dialogFormVisible: false,
-      // dialogFormTitle: "",
-      // form: {
-      //   bookId: "",
-      //   customerName: "",
-      //   bookName: "",
-      //   count: ""
-      // },
-      // rules: {
-      //   customerName: [
-      //     { required: true, message: "请输入顾客姓名", trigger: "blur" }
-      //   ],
-      //   bookName: [
-      //     { required: true, message: "请输入图书名称", trigger: "blur" }
-      //   ],
-      //   count: [{ required: true, message: "请输入图书数量", trigger: "blur" }]
-      // }
     }
   },
   created () {
-    // if(this.getCookie(''))
-    this.$http.get('/api/getSaleInfo').then(res => {
-      console.log(res)
+    this.$http.get('/api/get/SaleInfo').then(res => {
       this.tableData = res.data
-      console.log(this.tableData)
     })
-  },
-  methods: {
-    // handlePurchase(index, row) {
-    //   this.dialogFormTitle = "购买图书";
-    //   this.dialogFormVisible = true;
-    //   this.form.bookId = row.bookId;
-    //   this.form.bookName = row.bookName;
-    //   this.form.count = 1;
-    // },
-    // handleReturn(index, row) {
-    //   //console.log(index, row);
-    //   this.dialogFormTitle = "退购图书";
-    //   this.dialogFormVisible = true;
-    //   this.form.bookId = row.bookId;
-    //   this.form.bookName = row.bookName;
-    //   this.form.count = 1;
-    // },
-    // cancel() {
-    //   this.dialogFormVisible = false;
-    // },
-    // confirm() {
-    //   var that = this;
-    //   //检验表单
-    //   this.$refs["ruleForm"].validate(valid => {
-    //     if (valid) {
-    //       //post表单信息，进行销售操作或者退货操作
-    //       var url = "";
-    //       if (that.dialogFormTitle === "购买图书") url = "/api/book/sale";
-    //       else url = "/api/book/return";
-    //       that.$http
-    //         .post(url, {
-    //           bookId: that.form.bookId,
-    //           count: that.form.count,
-    //           customerName: that.form.customerName
-    //         })
-    //         .then(res => {
-    //           //销售或退货成功之后进行数据更新
-    //           if (res.status === 200 && res.data.status != 404) {
-    //             that.$http.get("/api/book/getBooks").then(res => {
-    //               that.tableData = res.data;
-    //               that.dialogFormVisible = false;
-    //               that.$message({
-    //                 type: "success",
-    //                 message:
-    //                   this.dialogFormTitle === "购买图书"
-    //                     ? "购买成功"
-    //                     : "退订成功"
-    //               });
-    //             });
-    //           } else {
-    //             that.$message({
-    //               type: "error",
-    //               message: res.data.message
-    //             });
-    //           }
-    //         });
-    //     }
-    //   });
-    // }
   }
 }
 </script>

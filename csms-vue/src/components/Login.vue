@@ -29,23 +29,18 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      title: "汽 车 销 售 管 理 系 统",
+      title: '汽 车 销 售 管 理 系 统',
       loading: false,
       loginForm: {
         username: null,
         password: null
       }
-    };
+    }
   },
-  created() {
-    // if(this.getCookie(''))
-    this.$http.get("/api/getSaleInfo").then(res => {
-      console.log(res);
-      this.tableData = res.data;
-      console.log(this.tableData);
-    });
+  created () {
+
   },
   methods: {
     handleLogin () {
@@ -53,18 +48,21 @@ export default {
       this.$http.post('/api/login', {
         username: this.loginForm.username,
         password: this.loginForm.password
-      }).then((res)=>{
+      }).then((res) => {
         this.loading = false
-        if(res.status === 200 && res.data.status) {
-          this.$router.replace({path: '/'})
+        console.log(res)
+        if (res.status === 200 && res.data.state) {
+          console.log(this.$route)
+          var path = this.$route.query.to ? this.$route.query.to : '/'
+          this.$router.replace({path: path})
           this.$message({
             type: 'success',
-            message: '登陆成功'
+            message: res.data.message
           })
         } else {
           this.$message({
             type: 'error',
-            message: '登陆失败，请检查用户名或密码！'
+            message: res.data.message
           })
         }
       }).catch((err) => {
@@ -72,7 +70,7 @@ export default {
       })
     }
   }
-};
+}
 </script>
 
 <style scoped>

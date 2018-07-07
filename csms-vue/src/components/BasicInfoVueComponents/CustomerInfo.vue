@@ -2,20 +2,23 @@
   <div>
     <el-table
       :data="tableData"
+      style="width: 100%;height: 100%"
       stripe
       >
       <el-table-column
-        label="车名"
+        label="顾客姓名"
+        width="180"
         align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.CName }}</span>
+          <span>{{ scope.row.CusName }}</span>
         </template>
       </el-table-column>
       <el-table-column
-        label="库存"
+        label="顾客电话"
+        width="180"
         align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.CarNum }}</span>
+          <span style="margin-left: 10px">{{ scope.row.CusPhone }}</span>
         </template>
       </el-table-column>
     </el-table>
@@ -30,19 +33,9 @@ export default {
     }
   },
   created () {
-    this.$http.get('/api/get/CarInventory').then(res => {
+    this.$http.get('/api/get/CustomerInfo').then(res => {
       this.tableData = res.data
     })
   }
 }
 </script>
-
-<style>
-.el-table {
-  width: 100%;
-  height: 100%;
-}
-.el-table-column {
-  width: 50%;
-}
-</style>
