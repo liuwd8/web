@@ -20,8 +20,6 @@ conn.connect(sqlMap.createUser, [], function() {
 
 });
 
-conn.query()
-
 db.login = function(req, res, next) {
   conn.query(sqlMap.queryUser, [req.body.username, req.body.password], function(err, result) {
     if(err) {
