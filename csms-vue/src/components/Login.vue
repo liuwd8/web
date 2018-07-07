@@ -50,9 +50,7 @@ export default {
         password: this.loginForm.password
       }).then((res) => {
         this.loading = false
-        console.log(res)
         if (res.status === 200 && res.data.state) {
-          console.log(this.$route)
           var path = this.$route.query.to ? this.$route.query.to : '/'
           this.$router.replace({path: path})
           this.$message({

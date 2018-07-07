@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import axios from 'axios'
+import data from '@/assets/data'
 import BasicInfo from '@/components/BasicInfoManager'
 import Inventory from '@/components/InventoryManager'
 import Purchase from '@/components/PurchaseManager'
@@ -13,6 +14,7 @@ import CustomerInfo from '@/components/BasicInfoVueComponents/CustomerInfo'
 
 Vue.use(Router)
 Vue.prototype.$http = axios
+Vue.prototype.global = data
 
 var router = new Router({
   routes: [
@@ -95,6 +97,7 @@ router.beforeEach((to, from, next) => {
           }
         })
       } else {
+        data.auth = res.data.auth
         next()
       }
     })

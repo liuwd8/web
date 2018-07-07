@@ -52,7 +52,7 @@
         </template>
       </el-table-column>
       <el-table-column
-        label="利润"
+        label="售价"
         align="center">
         <template slot-scope="scope">
           <span>{{ scope.row.SProfit }}</span>
@@ -137,7 +137,7 @@ export default {
     this.$http.get('/api/get/salelog').then(res => {
       this.tableData = res.data
     })
-    this.$http.get('/api/get/CarInfo').then(res => {
+    this.$http.get('/api/get/Carinfo').then(res => {
       this.carOptions = res.data
     })
     this.$http.get('/api/get/customerinfo').then(res => {
@@ -188,7 +188,6 @@ export default {
       }
       this.form.SProfit = Number(this.form.SProfit) * this.form.SNum
       this.$http.post('/api/set/SaleCar', this.form).then(res => {
-        console.log(res)
         this.tableData = res.data
         this.dialogFormVisible = false
       })

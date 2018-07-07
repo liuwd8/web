@@ -13,14 +13,14 @@ var mysqlconfig = {
   multipleStatements: true
 }
 var sqlMap = {
-  login: 'select username from users where username=? and password=?',
+  login: 'select username, status from users where username=? and password=?',
   createUser: 'insert into users(username, password) values(?, ?)',
   queryUser: 'select username, status from users where status >= (\
     select status from users where username=?\
   )',
   queryInfo: 'select * from ??',
   PurchaseCar: "insert into carinventory values (?,?) on duplicate key update CarNum = CarNum + ?;\
-    insert into purchaseinfo (CName,CNum) values (?,?);\
+    insert into purchaseinfo (CName,CNum,PPrice) values (?,?,?);\
     insert into inandoutinfo (CName,InAndOutNum,InAndOutType) values (?,?,?);\
     select * from purchaseinfo",
   SaleCar: "update carinventory set CarNum = CarNum - ? where CName = ?;\
@@ -61,6 +61,7 @@ db.login = function (req, res, next) {
         console.log(err);
       } else if (result.length) {
         req.session.username = result[0].username;
+        req.session.auth = result[0].status;
         res.json({
           state: true,
           message: '登录成功',
@@ -82,7 +83,7 @@ db.isLogin = function (req, res, next) {
         console.log(err.Error);
         res.json({ state: false });
       } else if (doc && doc.username === req.session.username) {
-        res.json({ state: true });
+        res.json({ state: true, auth: doc.auth >= 0 ? doc.auth : 0});
       } else {
         res.json({ state: false });
       }
@@ -157,6 +158,7 @@ db.PurchaseCar = function (req, res, next) {
     req.body.CNum,
     req.body.CName,
     req.body.CNum,
+    req.body.PPrice,
     req.body.CName,
     req.body.CNum,
     '入库'
@@ -181,11 +183,11 @@ db.insertCustomerinfo = function (req, res, next) {
   })
 }
 
-db.createRoot = function (username, password) {
-  var str = 'insert into users values(\''+username+'\', \''+password+'\', 0)';
-  conn.query(str, (err, data) => {
-    console.log(err, data)
-  });
-}
-db.createRoot('administor', '123456')
+// db.createRoot = function (username, password) {
+//   var str = 'insert into users values(\''+username+'\', \''+password+'\', 0)';
+//   conn.query(str, (err, data) => {
+//     console.log(err, data)
+//   });
+// }
+// db.createRoot('administor', '123456')
 exports = module.exports = db;

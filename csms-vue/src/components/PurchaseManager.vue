@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class='el-button-float-right'>
+    <div class='el-button-float-right' v-if="this.global.auth === 0">
       <el-button type='primary' @click='dialogFormVisible = true'>进货</el-button>
     </div>
     <el-table
@@ -31,6 +31,13 @@
         </template>
       </el-table-column>
       <el-table-column
+        label='单价'
+        align='center'>
+        <template slot-scope='scope'>
+          <span>{{ scope.row.PPrice }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
         label='进货量'
         width='180'
         align='center'>
@@ -55,6 +62,9 @@
         <el-form-item label='进货量' prop='CNum'>
           <el-input type="number" v-model='form.CNum' auto-complete='off'></el-input>
         </el-form-item>
+        <el-form-item label='单价' prop='PPrice'>
+          <el-input type="number" v-model='form.PPrice' auto-complete='off'></el-input>
+        </el-form-item>
       </el-form>
       <div slot='footer' class='dialog-footer'>
         <el-button @click='dialogFormVisible = false'>取 消</el-button>
@@ -73,7 +83,8 @@ export default {
       dialogFormVisible: false,
       form: {
         CName: null,
-        CNum: null
+        CNum: null,
+        PPrice: null
       },
       rules: {
         CName: [
@@ -81,6 +92,9 @@ export default {
         ],
         CNum: [
           { required: true, message: '请输入购买的数量', trigger: 'blur' }
+        ],
+        PPrice: [
+          { required: true, message: '请输入单价', trigger: 'blur' }
         ]
       },
       options: []
@@ -96,10 +110,10 @@ export default {
   },
   methods: {
     confirm () {
-      if (this.form.CNum <= 0) {
+      if (this.auth) {
         this.$message({
           type: 'error',
-          message: '购买数量不能小于或等于0'
+          message: '权限不足'
         })
         return false
       }
@@ -107,6 +121,20 @@ export default {
         this.$message({
           type: 'error',
           message: '请选择购买的车名'
+        })
+        return false
+      }
+      if (this.form.CNum <= 0) {
+        this.$message({
+          type: 'error',
+          message: '购买数量不能小于或等于0'
+        })
+        return false
+      }
+      if (this.form.PPrice <= 0) {
+        this.$message({
+          type: 'error',
+          message: '购买单价不能小于0'
         })
         return false
       }
@@ -130,10 +158,7 @@ export default {
   width: 100%;
 }
 .el-table {
-  width: 90%;
+  width: 100%;
   height: 100%;
-}
-.el-table-column {
-  width: 18%;
 }
 </style>

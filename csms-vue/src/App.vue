@@ -1,7 +1,7 @@
 <template>
   <div id="csms">
     <el-menu
-      :default-active="this.$route.path.split('/')[1] ? '/' + this.$route.path.split('/')[1] : '/'"
+      :default-active="this.$route.path.split('?')[1] !== '/' ? this.$route.path.split('?')[0] : '/'"
       class="el-menu-demo"
       mode="horizontal"
       background-color="#545c64"

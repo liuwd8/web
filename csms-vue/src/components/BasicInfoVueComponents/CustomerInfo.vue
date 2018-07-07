@@ -86,8 +86,10 @@ export default {
           this.form.CusPhone.length <= 20) {
         this.$http.post('/api/insert/customerinfo', this.form)
           .then(res => {
+            var temp = {}
+            Object.assign(temp, this.form)
             if (res.data) {
-              this.tableData.push(this.form)
+              this.tableData.push(temp)
             }
             this.dialogFormVisible = false
           })
