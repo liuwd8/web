@@ -1,17 +1,13 @@
 <template>
   <div>
     <div class='el-button-float-right'>
-      <el-button type='primary' @click='dialogFormVisible = true'>买车</el-button>
-      <!-- <el-button type='danger'>删除</el-button> -->
+      <el-button type='primary' @click='dialogFormVisible = true'>进货</el-button>
     </div>
     <el-table
       ref='multipleTable'
       :data='tableData'
       stripe
       >
-      <el-table-column
-        type='selection'>
-      </el-table-column>
       <el-table-column
         label='单号'
         align='center'>

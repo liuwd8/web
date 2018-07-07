@@ -27,10 +27,12 @@ app.all('*', (req, res, next) => {
 
 app.get('/login', db.isLogin);
 app.get('/logout', db.logout);
+app.get('/get/salelog', db.salelog);
 app.get('/get/:tableName', db.get);
 app.post('/login', db.login);
 app.post('/set/PurchaseCar', db.PurchaseCar);
 app.post('/set/SaleCar', db.SaleCar);
+app.post('/insert/customerinfo', db.insertCustomerinfo)
 
 app.listen(3000);
 console.log("server is listening at port 3000.");

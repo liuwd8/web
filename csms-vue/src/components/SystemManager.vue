@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div class="title">用户列表</div>
     <el-table
       :data="tableData"
       stripe
@@ -13,30 +14,51 @@
       </el-table-column>
       <el-table-column
         label="权限"
+        align="center"
+        :formatter='authFormat'>
+      </el-table-column>
+    </el-table>
+    <div class="title">操作日志</div>
+    <el-table
+      :data="logData"
+      stripe
+      >
+      <el-table-column
+        label="操作记录"
         align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.status }}</span>
+          <span>{{ scope.row.InAndOutID }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="车名"
+        align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.CName }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作时间"
+        align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.InAndOutDate.replace(/T([0-9:]+)\S+/, ' $1') }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="入库/出库"
+        align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.InAndOutType }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="数量"
+        align="center">
+        <template slot-scope="scope">
+          <span>{{ scope.row.InAndOutNum }}</span>
         </template>
       </el-table-column>
     </el-table>
-
-    <!-- <el-dialog :title="dialogFormTitle" :visible.sync="dialogFormVisible">
-      <el-form :model="form" ref="ruleForm" :rules="rules">
-        <el-form-item label="顾客姓名" :label-width="formLabelWidth" prop="customerName">
-          <el-input v-model="form.customerName" auto-complete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="书本名称" :label-width="formLabelWidth" prop="bookName">
-          <el-input v-model="form.bookName" auto-complete="off"></el-input>
-        </el-form-item>
-        <el-form-item label="数量" :label-width="formLabelWidth" prop="count">
-          <el-input v-model="form.count" auto-complete="off"></el-input>
-        </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer">
-        <el-button @click="cancel">取 消</el-button>
-        <el-button type="primary" @click="confirm">确 定</el-button>
-      </div>
-    </el-dialog> -->
   </div>
 </template>
 
@@ -44,13 +66,23 @@
 export default {
   data () {
     return {
-      tableData: []
+      tableData: [],
+      logData: [],
+      auth: ['root', '管理员', '高级用户', '普通用户']
     }
   },
   created () {
     this.$http.get('/api/get/users').then(res => {
       this.tableData = res.data
     })
+    this.$http.get('/api/get/inandoutinfo').then(res => {
+      this.logData = res.data
+    })
+  },
+  methods: {
+    authFormat (row, column) {
+      return this.auth[row.status]
+    }
   }
 }
 </script>
@@ -62,5 +94,10 @@ export default {
 }
 .el-table-column {
   width: 50%;
+}
+.title {
+  margin: 10px 0;
+  background-color: #8e8eac;
+  color: white;
 }
 </style>
