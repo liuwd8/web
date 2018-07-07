@@ -2,7 +2,7 @@ node_modules/
 node_cache/
 csms/
 csms-angular/
-
+sessions/
 *.zip
 
 package-lock.json
