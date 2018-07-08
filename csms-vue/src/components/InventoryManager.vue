@@ -31,7 +31,11 @@ export default {
   },
   created () {
     this.$http.get('/api/get/CarInventory').then(res => {
-      this.tableData = res.data
+      if (res.data.state) {
+        this.tableData = res.data.result
+      } else {
+        this.$message({ type: 'error', message: '网络错误' })
+      }
     })
   }
 }

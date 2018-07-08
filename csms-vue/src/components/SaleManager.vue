@@ -55,7 +55,7 @@
         label="售价"
         align="center">
         <template slot-scope="scope">
-          <span>{{ scope.row.SProfit }}</span>
+          <span>{{ scope.row.SPrice }}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -116,7 +116,7 @@ export default {
         CName: null,
         SNum: null,
         CusID: null,
-        SProfit: null
+        SPrice: null
       },
       rules: {
         CName: [
@@ -135,13 +135,35 @@ export default {
   },
   created () {
     this.$http.get('/api/get/salelog').then(res => {
-      this.tableData = res.data
+      if (res.data.state) {
+        this.tableData = res.data.result
+      } else {
+        this.$message({
+          type: 'error',
+          message: '发生未知错误'
+        })
+      }
     })
     this.$http.get('/api/get/Carinfo').then(res => {
-      this.carOptions = res.data
+      if (res.data.state) {
+        this.carOptions = res.data.result
+      } else {
+        this.$message({
+          type: 'error',
+          message: '发生未知错误'
+        })
+      }
     })
     this.$http.get('/api/get/customerinfo').then(res => {
       this.cusOptions = res.data
+      if (res.data.state) {
+        this.cusOptions = res.data.result
+      } else {
+        this.$message({
+          type: 'error',
+          message: '发生未知错误'
+        })
+      }
     })
   },
   methods: {
@@ -150,14 +172,14 @@ export default {
         CName: null,
         SNum: null,
         CusID: null,
-        SProfit: null
+        SPrice: null
       }
     },
     confirm () {
       var flag1 = true
       this.carOptions.forEach(data => {
         if (data.CName === this.form.CName) {
-          this.form.SProfit = data.CPrice
+          this.form.SPrice = data.CPrice
           flag1 = false
         }
       })
@@ -186,10 +208,17 @@ export default {
         })
         return false
       }
-      this.form.SProfit = Number(this.form.SProfit) * this.form.SNum
+      this.form.SPrice = Number(this.form.SPrice) * this.form.SNum
       this.$http.post('/api/set/SaleCar', this.form).then(res => {
-        this.tableData = res.data
-        this.dialogFormVisible = false
+        if (res.data.state) {
+          this.tableData = res.data.result
+          this.dialogFormVisible = false
+        } else {
+          this.$message({
+            type: 'error',
+            message: '库存不足，或其他错误'
+          })
+        }
       })
     }
   }

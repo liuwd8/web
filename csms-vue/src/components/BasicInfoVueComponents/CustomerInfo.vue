@@ -71,7 +71,11 @@ export default {
   },
   created () {
     this.$http.get('/api/get/CustomerInfo').then(res => {
-      this.tableData = res.data
+      if (res.data.state) {
+        this.tableData = res.data.result
+      } else {
+        this.$message({ type: 'error', message: '网络错误' })
+      }
     })
   },
   methods: {
@@ -86,12 +90,18 @@ export default {
           this.form.CusPhone.length <= 20) {
         this.$http.post('/api/insert/customerinfo', this.form)
           .then(res => {
-            var temp = {}
-            Object.assign(temp, this.form)
-            if (res.data) {
-              this.tableData.push(temp)
+            if (res.data.state) {
+              this.$http.get('/api/get/CustomerInfo').then(res => {
+                if (res.data.state) {
+                  this.tableData = res.data.result
+                  this.dialogFormVisible = false
+                } else {
+                  this.$message({ type: 'error', message: '网络错误' })
+                }
+              })
+            } else {
+              this.$message({ type: 'error', message: '网络错误' })
             }
-            this.dialogFormVisible = false
           })
       }
     }

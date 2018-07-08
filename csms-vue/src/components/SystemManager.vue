@@ -73,10 +73,18 @@ export default {
   },
   created () {
     this.$http.get('/api/get/users').then(res => {
-      this.tableData = res.data
+      if (res.data.state) {
+        this.tableData = res.data.result
+      } else {
+        this.$message({ type: 'error', message: '网络错误' })
+      }
     })
     this.$http.get('/api/get/inandoutinfo').then(res => {
-      this.logData = res.data
+      if (res.data.state) {
+        this.logData = res.data.result
+      } else {
+        this.$message({ type: 'error', message: '网络错误' })
+      }
     })
   },
   methods: {

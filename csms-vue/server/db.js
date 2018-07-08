@@ -19,15 +19,8 @@ var sqlMap = {
     select status from users where username=?\
   )',
   queryInfo: 'select * from ??',
-  PurchaseCar: "insert into carinventory values (?,?) on duplicate key update CarNum = CarNum + ?;\
-    insert into purchaseinfo (CName,CNum,PPrice) values (?,?,?);\
-    insert into inandoutinfo (CName,InAndOutNum,InAndOutType) values (?,?,?);\
-    select * from purchaseinfo",
-  SaleCar: "update carinventory set CarNum = CarNum - ? where CName = ?;\
-    insert into saleinfo (CName,SNum,SProfit,CusID) values (?,?,?,?);\
-    insert into inandoutinfo (CName,InAndOutNum,InAndOutType) values(?,?,?);\
-    select * from saleinfo, customerinfo, carinfo\
-    where saleinfo.CusID = customerinfo.CusID and saleinfo.CName = carinfo.CName",
+  PurchaseCar: "CALL purchase(?,?,?)",
+  SaleCar: "call sale(?,?,?,?)",
   insertCustomerinfo: 'insert into customerinfo values(0, ?, ?)'
 }
 db.sessionConfig = {
@@ -113,40 +106,41 @@ db.salelog = function (req, res, next) {
   var str = 'select * from saleinfo, customerinfo, carinfo\
     where saleinfo.CusID = customerinfo.CusID and saleinfo.CName = carinfo.CName';
   conn.query(str, function (err, result) {
-    res.json(result);
+    res.json({ state: true, result: result});
   });
 }
 
 db.get = function (req, res, next) {
   if (req.params.tableName === 'users') {
     conn.query(sqlMap.queryUser, [req.session.username], function (err, result) {
-      res.json(result);
+      res.json({ state: true, result: result});
     });
     return;
   }
   conn.query(sqlMap.queryInfo, [req.params.tableName], function (err, result) {
-    res.json(result);
+    if (err) {
+      console.log(err);
+      res.json({ state: false });
+    } else {
+      res.json({ state: true, result});
+    }
   });
 }
 
 db.SaleCar = function (req, res, next) {
   var params = [
-    req.body.SNum,
-    req.body.CName,
     req.body.CName,
     req.body.SNum,
-    req.body.SProfit,
-    req.body.CusID,
-    req.body.CName,
-    req.body.SNum,
-    '出库'
+    req.body.SPrice,
+    req.body.CusID
   ];
-  conn.query(sqlMap.SaleCar, params, function (err, result) {
+  conn.query(sqlMap.SaleCar, params, function (err, doc) {
     if (err) {
       console.log(err);
       res.json({ state: false });
     } else {
-      res.json(result[3]);
+      var result = doc[0];
+      res.json({ state: true, result});
     }
   })
 }
@@ -155,20 +149,15 @@ db.PurchaseCar = function (req, res, next) {
   var params = [
     req.body.CName,
     req.body.CNum,
-    req.body.CNum,
-    req.body.CName,
-    req.body.CNum,
-    req.body.PPrice,
-    req.body.CName,
-    req.body.CNum,
-    '入库'
+    req.body.PPrice
   ];
-  conn.query(sqlMap.PurchaseCar, params, function (err, result) {
+  conn.query(sqlMap.PurchaseCar, params, function (err, doc) {
     if (err) {
       console.log(err);
       res.json({ state: false });
     } else {
-      res.json(result[3]);
+      var result = doc[0];
+      res.json({ state: true, result});
     }
   })
 }

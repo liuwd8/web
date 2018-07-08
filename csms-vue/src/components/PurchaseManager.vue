@@ -102,10 +102,24 @@ export default {
   },
   created () {
     this.$http.get('/api/get/PurchaseInfo').then(res => {
-      this.tableData = res.data
+      if (res.data.state) {
+        this.tableData = res.data.result
+      } else {
+        this.$message({
+          type: 'error',
+          message: '发生未知错误'
+        })
+      }
     })
     this.$http.get('/api/get/CarInfo').then(res => {
-      this.options = res.data
+      if (res.data.state) {
+        this.options = res.data.result
+      } else {
+        this.$message({
+          type: 'error',
+          message: '发生未知错误'
+        })
+      }
     })
   },
   methods: {
@@ -139,9 +153,15 @@ export default {
         return false
       }
       this.$http.post('/api/set/PurchaseCar', this.form).then(res => {
-        console.log(res)
-        this.tableData = res.data
-        this.dialogFormVisible = false
+        if (res.data.state) {
+          this.tableData = res.data.result
+          this.dialogFormVisible = false
+        } else {
+          this.$message({
+            type: 'error',
+            message: '库存不足，或其他错误'
+          })
+        }
       })
     }
   }
