@@ -22,7 +22,7 @@
 exports = module.exports = db;
 ```
 
-## Build Setup
+## 运行方法
 
 ``` bash
 # install dependencies
@@ -41,4 +41,6 @@ npm run build --report
 node server/index.js
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 访问方法
+
+在浏览器中使用`127.0.0.1:8080`访问
